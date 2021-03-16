@@ -183,3 +183,24 @@ class MBus:
     def frame_data_free(self, frame_data):
         if frame_data.data_var.record:
             self._libmbus.data_record_free(frame_data.data_var.record)
+
+    def serial_set_baudrate(self, baudrate):
+        """
+        Set serial baudrate for MBus.
+        """
+        if self.handle:
+            if self._libmbus.serial_set_baudrate(self.handle, baudrate) == -1:
+                raise Exception("libmbus.mbus_serial_set_baudrate failed")
+        else:
+            raise Exception("Handle object not configure")
+
+    def send_ping_frame(self, address, purge_response):
+        """
+        Send ping frameMBus.
+        """
+        if self.handle:
+            if self._libmbus.send_ping_frame(self.handle, address, purge_response) == -1:
+                raise Exception("libmbus.mbus_send_ping_frame failed")
+        else:
+            raise Exception("Handle object not configure")
+

@@ -674,3 +674,8 @@ class MBusLib(object):
         self.serial_data_free               = lib.mbus_serial_data_free
         self.serial_data_free.argtypes      = [mbus_handle_p]
         self.serial_data_free.restype       = None
+
+        self.send_ping_frame                = lib.mbus_send_ping_frame
+        self.send_ping_frame.argtypes       = [mbus_handle_p, c_int, c_char]
+        self.send_ping_frame.restype        = c_int
+
