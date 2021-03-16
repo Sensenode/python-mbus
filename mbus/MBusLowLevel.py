@@ -358,7 +358,7 @@ class MBusLib(object):
         self.data_record_append.restypes    = None
 
         self.frame_new                      = lib.mbus_frame_new
-        self.frame_new.argtypes             = []
+        self.frame_new.argtypes             = [c_int]
         self.frame_new.restype              = mbus_frame_p
 
         self.frame_free                     = lib.mbus_frame_free
