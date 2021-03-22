@@ -153,6 +153,17 @@ class MBus:
 
         return reply
 
+    def send_recv_request(self, address, max_frames):
+        if not self.handle:
+            raise Exception("Handle object not configure")
+
+        reply = MBusFrame()
+
+        if self._libmbus.sendrecv_request(self.handle, address, reply, max_frames) != 0:
+            raise Exception("libmbus.sendrecv_request failed")
+
+        return reply
+
     def frame_data_parse(self, reply):
         """
         Low-level function: parse data in frame.
@@ -183,6 +194,10 @@ class MBus:
     def frame_data_free(self, frame_data):
         if frame_data.data_var.record:
             self._libmbus.data_record_free(frame_data.data_var.record)
+
+    def frame_free(self, frame):
+        if frame.next:
+            self._libmbus.frame_free(frame.next)
 
     def serial_set_baudrate(self, baudrate):
         """

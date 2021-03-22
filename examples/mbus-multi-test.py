@@ -31,9 +31,10 @@ print(res)
 res = mbus.send_ping_frame(0, 1)
 print(res)
 
-mbus.send_request_frame(address)
 
-reply = mbus.recv_frame()
+reply = mbus.send_recv_request(address, 16)
+
+#reply = mbus.recv_frame()
 
 if debug:
     print("reply =", reply)
@@ -43,10 +44,12 @@ reply_data = mbus.frame_data_parse(reply)
 if debug:
     print("reply_data =", reply_data)
 
+reply_data
 xml_buff = mbus.frame_data_xml(reply_data)
 
 print("xml_buff =", xml_buff)
 
 mbus.frame_data_free(reply_data)
+mbus.frame_free(reply)
 
 mbus.disconnect()
