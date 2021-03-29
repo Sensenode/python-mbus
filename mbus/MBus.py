@@ -2,7 +2,7 @@
 Python bindings for rSCADA libmbus.
 """
 
-from ctypes import cdll, cast, c_char_p
+from ctypes import cdll, cast, c_char_p, c_void_p
 from ctypes.util import find_library
 
 from .MBusFrame import MBusFrame
@@ -187,6 +187,8 @@ class MBus:
             raise Exception("libmbus.mbus_frame_data_xml failed")
 
         ret_val = cast(xml_result, c_char_p).value.decode('ISO-8859-1')
+        self._libc.free.argtypes = [c_void_p]
+
         self._libc.free(xml_result)
 
         return ret_val
