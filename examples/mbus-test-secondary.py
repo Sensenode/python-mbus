@@ -16,7 +16,7 @@ address = 0xFD #secondary
 
 
 #mbus = MBus(host="mbus-gw1", port=8888)
-mbus = MBus(device="/dev/ttyUSB0", libpath="/home/hksaato/python-mbus/examples/libmbus.so")
+mbus = MBus(device="/dev/ttyUSB0", libpath="/usr/local/lib/libmbus.so")
 
 if debug:
     print("mbus = " + str(mbus))
