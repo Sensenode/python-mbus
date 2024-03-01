@@ -1,7 +1,7 @@
 python-mbus
 ===========
 
-Added send_custom_text and tests for that and secondary addressing. Needs my fork of libmbus to work. I used sensenode instead of master because it seems to have addressed some issues with the original, and the original is abandoned. // Jouzer
+Added send_custom_text and tests for that and secondary addressing. Needs my fork of libmbus to work. I used sensenode fork instead of master because it seems to have addressed some issues with the original, and the original is abandoned. // Jouzer
 
 Python wrapper for [libmbus](http://www.rscada.se/libmbus) ([source](https://github.com/rscada/libmbus))
 
