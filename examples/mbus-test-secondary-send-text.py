@@ -42,7 +42,15 @@ ret = mbus.select_secondary_address("24134746FFFFFFFF")
 text = "Test"
 mbus.send_custom_text(address, text)
 
-reply = mbus.recv_frame()
+try:
+    reply = mbus.recv_frame()
+except Exception as e:
+    if "libmbus.mbus_recv_frame failed" in str(e):
+        print("Device did not respond.")
+        # Handle the specific case of the device not responding here
+    else:
+        print(f"Unexpected error: {e}")
+        # Handle other exceptions here
 
 if debug:
     print("reply =", reply)
