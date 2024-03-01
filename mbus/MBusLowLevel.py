@@ -272,7 +272,12 @@ class MBusLib(object):
         self.probe_secondary_address.argtypes   = [mbus_handle_p, c_char_p,
                                                     c_char_p]
         self.probe_secondary_address.restype    = c_int
-
+            
+        self.send_custom_text                 = lib.mbus_send_custom_text
+        self.send_custom_text.argtypes   = [mbus_handle_p, c_int,
+                                                    c_char_p]
+        self.send_custom_text.restype    = c_int
+            
         self.read_slave                     = lib.mbus_read_slave
         self.read_slave.argtypes            = [mbus_handle_p, mbus_address_p,
                                                 mbus_frame_p]
