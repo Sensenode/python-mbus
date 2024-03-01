@@ -38,7 +38,7 @@ ret = mbus.select_secondary_address("24134746FFFFFFFF")
 #print(res)
 #res = mbus.send_ping_frame(0, 1)
 #print(res)
-# fairly sure these pings not needed, try
+# fairly sure these pings not needed
 text = "Test"
 mbus.send_custom_text(address, text)
 
@@ -47,15 +47,6 @@ reply = mbus.recv_frame()
 if debug:
     print("reply =", reply)
 
-reply_data = mbus.frame_data_parse(reply)
-
-if debug:
-    print("reply_data =", reply_data)
-
-xml_buff = mbus.frame_data_xml(reply_data)
-
-print("xml_buff =", xml_buff)
-
-mbus.frame_data_free(reply_data)
+#in reality I should get E5 hex as reply but I don't know how to receive it in python yet. It'd be nice to print it out to know that the device said yes
 
 mbus.disconnect()
