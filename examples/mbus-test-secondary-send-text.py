@@ -46,15 +46,11 @@ try:
     reply = mbus.recv_frame()
 except Exception as e:
     if "libmbus.mbus_recv_frame failed" in str(e):
-        print("Device did not respond.")
-        # Handle the specific case of the device not responding here
+        reply = "Device did not respond."
     else:
-        print(f"Unexpected error: {e}")
-        # Handle other exceptions here
+        reply = f"Unexpected error: {e}"
 
 if debug:
     print("reply =", reply)
-
-#in reality I should get E5 hex as reply but I don't know how to receive it in python yet. It'd be nice to print it out to know that the device said yes
 
 mbus.disconnect()
