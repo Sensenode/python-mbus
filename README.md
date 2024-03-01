@@ -1,6 +1,8 @@
 python-mbus
 ===========
 
+Added send_custom_text and tests for that and secondary addressing. Needs my fork of libmbus to work. I used sensenode instead of master because it seems to have addressed some issues with the original, and the original is abandoned.
+
 Python wrapper for [libmbus](http://www.rscada.se/libmbus) ([source](https://github.com/rscada/libmbus))
 
 * installation: run ```python setup.py install```
