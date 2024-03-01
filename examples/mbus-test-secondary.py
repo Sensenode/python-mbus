@@ -13,7 +13,6 @@ from mbus.MBus import MBus
 debug = True
 #address = 0
 address = 0xFD #secondary
-ret = mbus.select_secondary_address("24134746FFFFFFFF")
 
 
 #mbus = MBus(host="mbus-gw1", port=8888)
@@ -28,6 +27,7 @@ if debug:
     print("mbus = " + str(mbus))
 
 mbus.serial_set_baudrate(2400)
+ret = mbus.select_secondary_address("24134746FFFFFFFF")
 
 #res = mbus.send_ping_frame(0xFD, 1)
 #print(res)
