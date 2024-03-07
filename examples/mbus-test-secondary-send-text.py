@@ -21,7 +21,7 @@ address = 0xFD #secondary
 
 
 #mbus = MBus(host="mbus-gw1", port=8888)
-mbus = MBus(device="/dev/ttyUSB1", libpath="/usr/local/lib/libmbus.so")
+mbus = MBus(device="/dev/ttyUSB0", libpath="/usr/local/lib/libmbus.so")
 
 if debug:
     print("mbus = " + str(mbus))
@@ -32,18 +32,19 @@ if debug:
     print("mbus = " + str(mbus))
 
 mbus.serial_set_baudrate(2400)
-ret = mbus.select_secondary_address("24134746FFFFFFFF")
+ret = mbus.select_secondary_address("24134667FFFFFFFF")
 
 #res = mbus.send_ping_frame(0xFD, 1)
 #print(res)
 #res = mbus.send_ping_frame(0, 1)
 #print(res)
 # fairly sure these pings not needed
-text = "Test"
+text = "PYTHONpython"
 mbus.send_custom_text(address, text)
 
 try:
     reply = mbus.recv_frame()
+    mbus.frame_free(reply)
 except Exception as e:
     if "libmbus.mbus_recv_frame failed" in str(e):
         reply = "Device did not respond."
