@@ -11,10 +11,10 @@ mbus test: send a request frame and receive and parse the reply
 from mbus.MBus import MBus
 
 debug = True
-address = 0
+address = 1
 
 #mbus = MBus(host="mbus-gw1", port=8888)
-mbus = MBus(device="/dev/ttyUSB0", libpath="/home/ph/git/python-mbus/examples/libmbus.so")
+mbus = MBus(device="/dev/ttyUSB1", libpath="/usr/local/lib/libmbus.so")
 
 if debug:
     print("mbus = " + str(mbus))

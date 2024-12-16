@@ -221,3 +221,17 @@ class MBus:
         else:
             raise Exception("Handle object not configure")
 
+    def send_custom_text(self, address, text):
+        """
+        Send custom text to Elvaco CMa10
+        """
+        if not isinstance(text, bytes):
+            text = text.encode('utf-8')
+            
+        if self.handle:
+            if self._libmbus.send_custom_text(self.handle, address, text) == -1:
+                raise Exception("libmbus.mbus_send_custom_text failed")
+        else:
+            raise Exception("Handle object not configure")
+            
+
